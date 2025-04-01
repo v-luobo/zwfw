@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>办事指南查询</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>办事指南查询</h1>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="输入关键词搜索事项..." id="searchInput">
+        </div>
+        
+        <div id="dataContainer">
+            <!-- 数据将通过JavaScript动态加载 -->
+        </div>
+        
+        <div id="noResults" class="no-results hidden">
+            没有找到匹配的结果，请尝试其他关键词。
+        </div>
+    </div>
+
+    <script src="bszl-data.js"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

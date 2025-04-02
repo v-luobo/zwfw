@@ -567,12 +567,26 @@ function showQRCode(link, name) {
         // 使用QRCode.js库生成二维码
         // 如果没有引入QRCode.js，则使用图片替代
         if (typeof QRCode === 'function') {
-            new QRCode(qrcodeContainer, {
-                text: link,
-                width: 200,
-                height: 200,
-                errorCorrectionLevel: 'L' // 降低容错率，使用'L'(低)级别
-            });
+            try {
+                // 设置最大链接长度，超过则截断
+                const maxLinkLength = 500; // 设置一个合理的最大长度
+                let processedLink = link;
+                
+                if (link.length > maxLinkLength) {
+                    console.warn(`链接过长(${link.length}字符)，已截断至${maxLinkLength}字符`); 
+                    processedLink = link.substring(0, maxLinkLength);
+                }
+                
+                new QRCode(qrcodeContainer, {
+                    text: processedLink,
+                    width: 300,
+                    height: 300,
+                    correctLevel : 3 // 使用最高容错率'H'级别
+                });
+            } catch (error) {
+                console.error('生成二维码时出错:', error);
+                qrcodeContainer.innerHTML = `<p>生成二维码时出错: ${error.message}</p><p>链接: ${link.substring(0, 100)}${link.length > 100 ? '...' : ''}</p>`;
+            }
         } else {
             // 创建一个链接显示
             const linkElement = document.createElement('div');

@@ -56,6 +56,7 @@ h1 {
     justify-content: flex-start;
     gap: 12px;
     padding: 5px;
+    width: 100%;
 }
 
 /* 二维码模态框样式 */
@@ -123,7 +124,8 @@ h1 {
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     margin-bottom: 15px;
-    width: calc(33.33% - 12px);
+    flex: 1 0 300px;
+    max-width: 100%;
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(226, 232, 240, 0.8);
@@ -397,7 +399,7 @@ h1 {
 /* 响应式布局 */
 @media (max-width: 1200px) {
     .department {
-        width: calc(50% - 12px);
+        flex: 1 0 280px;
     }
     
     .sub-item, .uncategorized-item {
@@ -407,7 +409,7 @@ h1 {
 
 @media (max-width: 900px) {
     .department {
-        width: calc(100% - 20px);
+        flex: 1 0 260px;
     }
     
     .sub-item, .uncategorized-item {
